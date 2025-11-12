@@ -1,0 +1,18 @@
+import { useQuery } from "@tanstack/react-query"
+import { createServerFn } from "@tanstack/react-start"
+import { db } from "~/server/mongoose"
+
+export function useTodos() {
+  return useQuery({
+    initialData: [],
+    queryFn: getTodos,
+    queryKey: ["todos"],
+  })
+}
+
+let getTodos = createServerFn().handler(async () => {
+  let todos = await db.Todo.find().lean()
+  return todos.map(({ _id, text }) => {
+    return { id: _id.toString(), text }
+  })
+})
