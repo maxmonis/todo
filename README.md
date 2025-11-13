@@ -35,3 +35,11 @@ Start the development server
 ```bash
 pnpm dev
 ```
+
+### Testing
+
+Run unit tests
+
+```bash
+pnpm test
+```
