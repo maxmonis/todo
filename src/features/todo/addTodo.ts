@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start"
-import z from "zod"
+import { z } from "zod"
 import { db } from "~/server/mongoose"
 import { authMiddleware } from "../auth/authMiddleware"
 

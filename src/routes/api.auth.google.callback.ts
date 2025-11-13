@@ -20,17 +20,15 @@ export let Route = createFileRoute("/api/auth/google/callback")({
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           method: "POST",
         })
-
-        if (!tokenRes.ok) throw Error("Google token exchange failed")
-        let tokenData = await tokenRes.json()
+        let { access_token } = await tokenRes.json()
+        if (typeof access_token != "string") throw Error("No access token")
 
         let userRes = await fetch(
           "https://www.googleapis.com/oauth2/v3/userinfo",
-          { headers: { Authorization: `Bearer ${tokenData.access_token}` } },
+          { headers: { Authorization: `Bearer ${access_token}` } },
         )
         let { email } = await userRes.json()
-        if (typeof email != "string")
-          throw Error("No email returned from Google")
+        if (typeof email != "string") throw Error("No email")
 
         let user = await db.User.findOne({ email })
         user ??= await db.User.create({ email })

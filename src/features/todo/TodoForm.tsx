@@ -24,7 +24,7 @@ export function TodoForm() {
         value={text}
       />
       <button
-        className="rounded-lg bg-blue-500 px-5 py-3 font-bold transition-colors hover:bg-blue-600 disabled:cursor-not-allowed disabled:bg-blue-500/50"
+        className="rounded-lg bg-blue-500 px-5 py-3 font-bold transition-colors hover:bg-blue-600 disabled:bg-blue-500/50"
         disabled={text.trim().length == 0}
         type="submit"
       >
