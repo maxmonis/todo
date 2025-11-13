@@ -35,10 +35,7 @@
   "name": "todo",
   "private": true,
   "scripts": {
-    "build": "vite build",
-    "dev": "vite dev",
-    "serve": "vite preview",
-    "test": "vitest run"
+    "dev": "vite dev"
   },
   "type": "module"
 }
