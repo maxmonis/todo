@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import { createServerFn } from "@tanstack/react-start"
 import { db } from "~/server/mongoose"
+import { useAuth } from "../auth/authContext"
 import { authMiddleware } from "../auth/authMiddleware"
 
 export function useTodos() {
+  let { user } = useAuth()
   return useQuery({
+    enabled: Boolean(user),
     initialData: [],
     queryFn: getTodos,
     queryKey: ["todos"],

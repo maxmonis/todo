@@ -8,9 +8,8 @@ export let Route = createFileRoute("/api/auth/google/callback")({
       async GET({ request }) {
         let url = new URL(request.url)
         let code = url.searchParams.get("code")
-        let state = url.searchParams.get("state")
 
-        if (!code) throw new Error("Missing authorization code from Google")
+        if (!code) throw redirect({ href: process.env.VITE_BASE_URL })
 
         let tokenRes = await fetch("https://oauth2.googleapis.com/token", {
           body: new URLSearchParams({
@@ -41,22 +40,13 @@ export let Route = createFileRoute("/api/auth/google/callback")({
         let user = await db.User.findOne({ email })
         user ??= await db.User.create({ email })
 
-        let parsed: unknown = state ? JSON.parse(state) : null
-        let next =
-          parsed &&
-          typeof parsed == "object" &&
-          "next" in parsed &&
-          typeof parsed.next == "string"
-            ? parsed.next
-            : ""
-
         let session = await useAuthSession()
         await session.update({
           email: user.email,
           userId: user._id.toString(),
         })
 
-        throw redirect({ href: process.env.VITE_BASE_URL + next })
+        throw redirect({ href: process.env.VITE_BASE_URL })
       },
     },
   },

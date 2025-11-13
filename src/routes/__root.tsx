@@ -1,6 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query"
 import {
   HeadContent,
+  Link,
   Scripts,
   createRootRouteWithContext,
 } from "@tanstack/react-router"
@@ -19,13 +20,29 @@ export let Route = createRootRouteWithContext<{
       ],
     }
   },
+  notFoundComponent() {
+    return (
+      <div className="text-white">
+        <h1 className="mb-3 text-2xl">404: Not Found</h1>
+        <Link className="underline" replace to="/">
+          Return Home
+        </Link>
+      </div>
+    )
+  },
   shellComponent({ children }) {
     return (
       <html lang="en">
         <head>
           <HeadContent />
         </head>
-        <body>
+        <body
+          className="min-h-screen bg-linear-to-br from-purple-900 via-purple-800 to-black p-5"
+          style={{
+            backgroundImage:
+              "radial-gradient(50% 50% at 80% 20%, #3B021F 0%, #7B1028 60%, #1A000A 100%)",
+          }}
+        >
           {children}
           <Scripts />
         </body>

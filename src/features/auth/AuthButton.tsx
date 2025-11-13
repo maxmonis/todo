@@ -1,6 +1,6 @@
 import { useAuth } from "./authContext"
 
-export function AuthButton({ next }: { next?: string }) {
+export function AuthButton() {
   let { loading, logout, user } = useAuth()
 
   if (loading) return null
@@ -10,7 +10,7 @@ export function AuthButton({ next }: { next?: string }) {
       <div className="my-5">
         <p className="text-sm">Logged in as {user.email}</p>
         <button
-          className="text-red-500"
+          className="mt-1 text-red-500"
           onClick={() => {
             logout()
           }}
@@ -24,9 +24,7 @@ export function AuthButton({ next }: { next?: string }) {
     <button
       className="flex h-10 w-full items-center justify-center rounded-lg border bg-white"
       onClick={() => {
-        window.location.href = `${
-          import.meta.env.VITE_BASE_URL
-        }/api/auth/google${next ? `?next=${next}` : ""}`
+        window.location.href = `${import.meta.env.VITE_BASE_URL}/api/auth/google`
       }}
       type="button"
     >
