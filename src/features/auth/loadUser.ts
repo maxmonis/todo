@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start"
 import { isValidObjectId } from "mongoose"
-import { db } from "~/server/mongoose"
+import { db } from "~/server/db"
 import { useAuthSession } from "./useAuthSession"
 
 export let loadUser = createServerFn().handler(async () => {

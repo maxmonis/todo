@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start"
 import { z } from "zod"
-import { db } from "~/server/mongoose"
+import { db } from "~/server/db"
 import { authMiddleware } from "../auth/authMiddleware"
 
 export let addTodo = createServerFn({ method: "POST" })

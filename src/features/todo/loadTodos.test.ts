@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest"
-import { db } from "~/server/mongoose"
+import { db } from "~/server/db"
 import { loadTodos } from "./loadTodos"
 
 vi.mock("@tanstack/react-start", () => {
@@ -17,7 +17,7 @@ vi.mock("@tanstack/react-start", () => {
     }),
   }
 })
-vi.mock("~/server/mongoose")
+vi.mock("~/server/db")
 vi.mock("../auth/authMiddleware", () => {
   return { authMiddleware: vi.fn() }
 })

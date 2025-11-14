@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start"
-import { db } from "~/server/mongoose"
+import { db } from "~/server/db"
 import { authMiddleware } from "../auth/authMiddleware"
 
 export let loadTodos = createServerFn()

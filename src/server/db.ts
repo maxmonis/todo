@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import { connectDB } from "./connectDB"
 
 interface TodoDoc {
   checked?: boolean
@@ -29,15 +30,4 @@ export let db = {
     mongoose.model("User", userSchema),
 }
 
-async function connectDB() {
-  try {
-    mongoose.set("strictQuery", false)
-    await mongoose.connect(process.env.MONGO_URI!)
-    console.log("MongoDB connected")
-  } catch (error) {
-    console.error("Failed to connect to MongoDB:", error)
-    process.exit(1)
-  }
-}
-
-if (import.meta.env.MODE != "test") connectDB()
+connectDB()

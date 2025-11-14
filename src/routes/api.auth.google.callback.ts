@@ -1,6 +1,6 @@
 import { createFileRoute, redirect } from "@tanstack/react-router"
 import { useAuthSession } from "~/features/auth/useAuthSession"
-import { db } from "~/server/mongoose"
+import { db } from "~/server/db"
 
 export let Route = createFileRoute("/api/auth/google/callback")({
   server: {

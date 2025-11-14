@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import { expect, it, vi } from "vitest"
-import { db } from "~/server/mongoose"
+import { db } from "~/server/db"
 import { loadUser } from "./loadUser"
 import { useAuthSession } from "./useAuthSession"
 
@@ -17,7 +17,7 @@ vi.mock("@tanstack/react-start", () => {
     }),
   }
 })
-vi.mock("~/server/mongoose")
+vi.mock("~/server/db")
 vi.mock("./useAuthSession")
 
 it("returns null if no session exists", async () => {
