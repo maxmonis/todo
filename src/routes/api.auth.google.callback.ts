@@ -34,10 +34,7 @@ export let Route = createFileRoute("/api/auth/google/callback")({
         user ??= await db.User.create({ email })
 
         let session = await useAuthSession()
-        await session.update({
-          email: user.email,
-          userId: user._id.toString(),
-        })
+        await session.update({ email: user.email, userId: user._id.toString() })
 
         throw redirect({ href: process.env.VITE_BASE_URL })
       },

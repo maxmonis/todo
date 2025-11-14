@@ -17,12 +17,12 @@ vi.mock("./TodoList", () => {
 vi.mock("./useTodos")
 
 it("renders spinner if authenticating", () => {
-  vi.mocked(useAuth).mockReturnValue({
+  vi.mocked(useAuth).mockReturnValueOnce({
     loading: true,
     logout: vi.fn(),
     user: null,
   })
-  vi.mocked(useTodos).mockReturnValue({
+  vi.mocked(useTodos).mockReturnValueOnce({
     isLoading: false,
   } as any)
   render(<TodoApp />)
@@ -30,12 +30,12 @@ it("renders spinner if authenticating", () => {
 })
 
 it("renders spinner if loading todos", () => {
-  vi.mocked(useAuth).mockReturnValue({
+  vi.mocked(useAuth).mockReturnValueOnce({
     loading: false,
     logout: vi.fn(),
     user: { email: "valid@mock.email" },
   })
-  vi.mocked(useTodos).mockReturnValue({
+  vi.mocked(useTodos).mockReturnValueOnce({
     isLoading: true,
   } as any)
   render(<TodoApp />)
@@ -43,12 +43,12 @@ it("renders spinner if loading todos", () => {
 })
 
 it("renders auth button if logged out", () => {
-  vi.mocked(useAuth).mockReturnValue({
+  vi.mocked(useAuth).mockReturnValueOnce({
     loading: false,
     logout: vi.fn(),
     user: null,
   })
-  vi.mocked(useTodos).mockReturnValue({
+  vi.mocked(useTodos).mockReturnValueOnce({
     isLoading: false,
   } as any)
   render(<TodoApp />)
@@ -57,12 +57,12 @@ it("renders auth button if logged out", () => {
 })
 
 it("renders list and form if signed in", () => {
-  vi.mocked(useAuth).mockReturnValue({
+  vi.mocked(useAuth).mockReturnValueOnce({
     loading: false,
     logout: vi.fn(),
     user: { email: "valid@mock.email" },
   })
-  vi.mocked(useTodos).mockReturnValue({
+  vi.mocked(useTodos).mockReturnValueOnce({
     isLoading: false,
   } as any)
   render(<TodoApp />)

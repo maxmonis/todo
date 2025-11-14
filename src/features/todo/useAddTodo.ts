@@ -7,12 +7,12 @@ export function useAddTodo() {
 
   return useMutation({
     mutationFn: addTodo,
-    onSuccess(newTodo) {
+    onSuccess(todo) {
       queryClient.setQueryData(
         ["todos"],
         (oldTodos: ReturnType<typeof useTodos>["data"]) => {
           let newTodos = [...oldTodos]
-          newTodos.push(newTodo)
+          newTodos.push(todo)
           return newTodos
         },
       )

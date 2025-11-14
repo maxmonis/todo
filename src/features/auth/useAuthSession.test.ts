@@ -12,7 +12,7 @@ it("returns the result of useSession", () => {
     userId: "mockuserId",
   }
   // @ts-expect-error
-  useSession.mockReturnValue(mockSession)
+  useSession.mockReturnValueOnce(mockSession)
   expect(useAuthSession()).toEqual(mockSession)
   expect(useSession).toHaveBeenCalledOnce()
 })

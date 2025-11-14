@@ -43,13 +43,13 @@ it("displays todo checked state", async () => {
 
 it("allows todo deletion", async () => {
   render(<TodoList />)
-  let todos = screen.getAllByRole("listitem")
-  fireEvent.click(within(todos[0]!).getByRole("button", { name: "Delete" }))
+  let [one, two] = screen.getAllByRole("listitem")
+  fireEvent.click(within(one!).getByRole("button", { name: "Delete" }))
   expect(mocks.deleteTodo).toHaveBeenCalledExactlyOnceWith({
     data: "washcarid",
   })
   mocks.deleteTodo.mockClear()
-  fireEvent.click(within(todos[1]!).getByRole("button", { name: "Delete" }))
+  fireEvent.click(within(two!).getByRole("button", { name: "Delete" }))
   expect(mocks.deleteTodo).toHaveBeenCalledExactlyOnceWith({
     data: "buygroceriesid",
   })
@@ -57,13 +57,13 @@ it("allows todo deletion", async () => {
 
 it("allows todo toggling", async () => {
   render(<TodoList />)
-  let todos = screen.getAllByRole("listitem")
-  fireEvent.click(within(todos[0]!).getByLabelText("Wash car"))
+  let [one, two] = screen.getAllByRole("listitem")
+  fireEvent.click(within(one!).getByLabelText("Wash car"))
   expect(mocks.toggleTodo).toHaveBeenCalledExactlyOnceWith({
     data: "washcarid",
   })
   mocks.toggleTodo.mockClear()
-  fireEvent.click(within(todos[1]!).getByLabelText("Buy groceries"))
+  fireEvent.click(within(two!).getByLabelText("Buy groceries"))
   expect(mocks.toggleTodo).toHaveBeenCalledExactlyOnceWith({
     data: "buygroceriesid",
   })
