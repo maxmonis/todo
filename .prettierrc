@@ -17,7 +17,7 @@
   "semi": false,
   "singleQuote": false,
   "tabWidth": 2,
-  "tailwindStylesheet": "src/styles.css",
+  "tailwindStylesheet": "./src/styles.css",
   "trailingComma": "all",
   "useTabs": false
 }
