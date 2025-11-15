@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "~/components/LoadingSpinner"
+import { LoadingSpinner } from "~/components/ui/LoadingSpinner"
 import { AuthButton } from "../auth/AuthButton"
 import { useAuth } from "../auth/authContext"
 import { TodoForm } from "./TodoForm"

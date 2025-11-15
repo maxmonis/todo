@@ -1,4 +1,4 @@
-import { Checkbox } from "~/components/Checkbox"
+import { Checkbox } from "~/components/ui/Checkbox"
 import { cn } from "~/lib/utils"
 import { useDeleteTodo } from "./useDeleteTodo"
 import { useTodos } from "./useTodos"
